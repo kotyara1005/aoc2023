@@ -7,6 +7,21 @@ import (
 	"strings"
 )
 
+func ReadBytes(filename string) []byte {
+	f, err := os.Open(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+
+	data, err := io.ReadAll(f)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return data
+}
+
 func ReadLines(filename string) []string {
 	f, err := os.Open(filename)
 	if err != nil {
