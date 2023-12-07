@@ -4,8 +4,24 @@ import (
 	"io"
 	"log"
 	"os"
+	"regexp"
+	"strconv"
 	"strings"
 )
+
+var Number = regexp.MustCompile(`\d+`)
+
+func FindAllNumbers(line string) []int {
+	result := make([]int, 0, 0)
+	for _, val := range Number.FindAllString(line, -1) {
+		num, err := strconv.Atoi(val)
+		if err != nil {
+			log.Fatal(err)
+		}
+		result = append(result, num)
+	}
+	return result
+}
 
 func ReadBytes(filename string) []byte {
 	f, err := os.Open(filename)
