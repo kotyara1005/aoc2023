@@ -3,6 +3,7 @@ package aoc2023
 import (
 	"io"
 	"log"
+	"math"
 	"os"
 	"regexp"
 	"strconv"
@@ -65,4 +66,40 @@ func Max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+type Counter map[rune]int
+
+func (c Counter) Max() (rune, int) {
+	result := math.MinInt
+	mkey := '-'
+
+	for key, val := range c {
+		if result < val {
+			result = val
+			mkey = key
+		}
+	}
+
+	return mkey, result
+}
+
+func (c Counter) HasValue(val int) bool {
+	for _, v := range c {
+		if v == val {
+			return true
+		}
+	}
+	return false
+}
+
+func NewCounter(s string) Counter {
+	result := make(Counter)
+
+	for _, r := range []rune(s) {
+		val, _ := result[r]
+		result[r] = val + 1
+	}
+
+	return result
 }
