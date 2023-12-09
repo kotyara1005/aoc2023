@@ -103,3 +103,32 @@ func NewCounter(s string) Counter {
 
 	return result
 }
+
+type StringSet map[string]struct{}
+
+func NewStringSet(keys []string) StringSet {
+	result := make(StringSet)
+
+	for _, key := range keys {
+		result.Set(key)
+	}
+
+	return result
+}
+
+func (s StringSet) Set(key string) {
+	s[key] = struct{}{}
+}
+
+func (s StringSet) Has(key string) bool {
+	_, ok := s[key]
+	return ok
+}
+
+func Atoi(s string) int {
+	num, err := strconv.Atoi(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return num
+}
