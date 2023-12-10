@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-var Number = regexp.MustCompile(`\d+`)
+var Number = regexp.MustCompile(`-?\d+`)
 
 func FindAllNumbers(line string) []int {
 	result := make([]int, 0, 0)
@@ -131,4 +131,16 @@ func Atoi(s string) int {
 		log.Fatal(err)
 	}
 	return num
+}
+
+func Reverse(input []int) []int {
+	Len := len(input)
+	mid := Len / 2
+
+	for i := 0; i < mid; i++ {
+		j := Len - i - 1
+
+		input[i], input[j] = input[j], input[i]
+	}
+	return input
 }
