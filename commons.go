@@ -1,6 +1,7 @@
 package aoc2023
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"math"
@@ -167,4 +168,10 @@ func ReverseRuneSlices(input [][]rune) [][]rune {
 		input[i], input[j] = input[j], input[i]
 	}
 	return input
+}
+
+type Point [2]int
+
+func (p Point) String() string {
+	return fmt.Sprintf("%d-%d", p[0], p[1])
 }
