@@ -144,3 +144,27 @@ func Reverse(input []int) []int {
 	}
 	return input
 }
+
+func ReverseRunes(input []rune) []rune {
+	Len := len(input)
+	mid := Len / 2
+
+	for i := 0; i < mid; i++ {
+		j := Len - i - 1
+
+		input[i], input[j] = input[j], input[i]
+	}
+	return input
+}
+
+func ReverseRuneSlices(input [][]rune) [][]rune {
+	Len := len(input)
+	mid := Len / 2
+
+	for i := 0; i < mid; i++ {
+		j := Len - i - 1
+
+		input[i], input[j] = input[j], input[i]
+	}
+	return input
+}
