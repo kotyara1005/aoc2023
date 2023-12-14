@@ -69,6 +69,13 @@ func Max(a, b int) int {
 	return b
 }
 
+func Abs(v int) int {
+	if v < 0 {
+		return -v
+	}
+	return v
+}
+
 type Counter map[rune]int
 
 func (c Counter) Max() (rune, int) {
